@@ -1,0 +1,31 @@
+body {
+  background-color: rgb(240, 238, 225);
+  text-align: center;
+}
+header {
+  padding: 10px 0 10px 0;
+  background-color: rgb(252, 231, 199);
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  margin-bottom: 20px;
+  border-bottom: thick double rgb(248, 233, 208);
+}
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 20px;
+}
+.movie-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie-card img {
+  width: 280px;
+  height: 350px;
+}
