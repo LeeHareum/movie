@@ -1,12 +1,20 @@
+* {
+  margin: 0;
+}
+:root {
+  --brand-sub-color: rgb(106, 72, 44);
+}
 body {
-  background-color: rgb(240, 238, 225);
+  background-color: rgb(255, 254, 246);
   text-align: center;
 }
 header {
-  padding: 10px 0 10px 0;
+  color: var(--brand-sub-color);
+  padding: 20px 0 20px 0;
   background-color: rgb(252, 231, 199);
 }
 .search {
+  color: var(--brand-sub-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,18 +22,77 @@ header {
   margin-bottom: 20px;
   border-bottom: thick double rgb(248, 233, 208);
 }
+#search-input {
+  margin: 0 5px 0 5px;
+  padding: 5px 10px;
+  width: 200px;
+  border: 1px solid var(--brand-sub-color);
+  border-radius: 3px;
+}
+#search-input::placeholder {
+  color: rgb(106, 72, 44, 0.5);
+}
+#search-btn {
+  padding: 5px 15px;
+  background-color: rgb(252, 238, 209);
+  border: 1px solid rgb(249, 230, 194);
+  border-radius: 3px;
+  cursor: pointer;
+}
+#search-btn:hover {
+  background-color: rgb(251, 219, 177);
+}
 .card-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
-  gap: 20px;
+  gap: 10px 80px;
+  margin: 0 100px;
 }
 .movie-card {
+  position: relative;
+  padding: 30px 10px 10px 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  color: var(--brand-sub-color);
+  box-shadow: 3px 3px 7px 3px rgba(209, 189, 150, 0.528);
+  background-image: linear-gradient(
+    to top,
+    rgb(252, 250, 247),
+    rgb(251, 215, 174)
+  );
+}
+.movie-card:hover .overlay {
   display: flex;
+  background-color: rgba(135, 91, 54, 0.783);
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px 5px var(--brand-sub-color);
+  cursor: pointer;
+}
+.movie-card .overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
+  font-size: 380%;
+  font-weight: bold;
+}
+.movie-card h3 {
+  margin: 3px 0 5px;
+  font-size: larger;
+  font-weight: bold;
+}
+.movie-card p {
+  margin: 0 30px 20px 30px;
+  font-size: small;
 }
 .movie-card img {
-  width: 280px;
-  height: 350px;
+  width: 300px;
+  height: 370px;
+  margin-bottom: 5px;
 }
