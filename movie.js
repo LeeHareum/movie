@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("search-input");
+  let allMovies = [];
+
   const options = {
     method: "GET",
     headers: {
@@ -14,9 +17,22 @@ document.addEventListener("DOMContentLoaded", function () {
   )
     .then((response) => response.json())
     .then((data) => {
-      displayMovies(data.results);
+      allMovies = data.results;
+      displayMovies(allMovies);
     })
     .catch((err) => console.error(err));
+
+  document
+    .querySelector(".search")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const searchText = searchInput.value.toLowerCase();
+
+      const filteredMovies = allMovies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchText)
+      );
+      displayMovies(filteredMovies);
+    });
 
   function displayMovies(movies) {
     const cardList = document.querySelector(".card-list");
@@ -27,14 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
       movieCard.classList.add("movie-card");
 
       movieCard.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
-            <h3>${movie.title}</h3>
-            <p>${movie.overview}</p>
-            <p>평점: ${movie.vote_average}</p>
-            <div class="overlay">
-            Click
-          </div>
-          `;
+              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
+              <h3>${movie.title}</h3>
+              <p>${movie.overview}</p>
+              <p>평점: ${movie.vote_average}</p>
+              <div class="overlay">Click</div>
+            `;
+
+      movieCard.addEventListener("click", function () {
+        alert("영화 id : " + movie.id);
+      });
       cardList.appendChild(movieCard);
     });
   }

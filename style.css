@@ -32,11 +32,17 @@ header {
 #search-input::placeholder {
   color: rgb(106, 72, 44, 0.5);
 }
+#search-input:focus {
+  outline: none;
+  color: var(--brand-sub-color);
+  border: 1.7px solid var(--brand-sub-color);
+}
 #search-btn {
   padding: 5px 15px;
   background-color: rgb(252, 238, 209);
   border: 1px solid rgb(249, 230, 194);
   border-radius: 3px;
+  color: var(--brand-sub-color);
   cursor: pointer;
 }
 #search-btn:hover {
@@ -64,7 +70,7 @@ header {
 }
 .movie-card:hover .overlay {
   display: flex;
-  background-color: rgba(135, 91, 54, 0.783);
+  background-color: rgba(192, 120, 61, 0.783);
   border-radius: 20px;
   box-shadow: 3px 3px 10px 5px var(--brand-sub-color);
   cursor: pointer;
