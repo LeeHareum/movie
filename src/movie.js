@@ -30,23 +30,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayMovies(movies) {
   const cardList = document.querySelector(".card-list");
-  cardList.innerHTML = "";
+  const movieHtmlArray = movies.map((movie) => {
+    return `
+      <div class="movie-card">
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
+        <h3>${movie.title}</h3>
+        <p>${movie.overview}</p>
+        <p>average: ${movie.vote_average}</p>
+        <div class="overlay">Click</div>
+      </div>
+    `;
+  });
+  cardList.innerHTML = movieHtmlArray.join("");
 
-  movies.forEach((movie) => {
-    const movieCard = document.createElement("div");
-    movieCard.classList.add("movie-card");
-
-    movieCard.innerHTML = `
-              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
-              <h3>${movie.title}</h3>
-              <p>${movie.overview}</p>
-              <p>average: ${movie.vote_average}</p>
-              <div class="overlay">Click</div>
-            `;
-
-    movieCard.addEventListener("click", function () {
-      alert("영화 id : " + movie.id);
+  // 이벤트 리스너를 추가하기 위해, 모든 .movie-card 요소에 대해 동적으로 이벤트 리스너를 추가해야 함
+  document.querySelectorAll(".movie-card").forEach((card, index) => {
+    card.addEventListener("click", () => {
+      alert("영화 id : " + movies[index].id);
     });
-    cardList.appendChild(movieCard);
   });
 }
