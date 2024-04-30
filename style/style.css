@@ -35,7 +35,7 @@ header {
 #search-input:focus {
   outline: none;
   color: var(--brand-sub-color);
-  border: 1.7px solid var(--brand-sub-color);
+  border: 2px solid var(--brand-sub-color);
 }
 #search-btn {
   padding: 5px 15px;
@@ -98,7 +98,7 @@ header {
   font-size: small;
 }
 .movie-card img {
-  width: 300px;
+  width: 280px;
   height: 370px;
   margin-bottom: 5px;
 }
